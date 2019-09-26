@@ -30,6 +30,12 @@ char peek(Node* top) {
 	return top->data;
 }
 
+char peekFromTop(Node* top, int position) {
+	int i;
+	for(i = 0; i < position; i++) top = top->next;
+	return top->data;
+}
+
 int isEmpty(Node* top) {
 	return top == NULL;
 }
