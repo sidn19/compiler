@@ -31,11 +31,15 @@ int validateSemicolons(FILE *file, Node* top, int* line) {
 			else if (ch == '{') {
 				emptyStack(&top);
 			}
+			else if (ch == 'r' && peek(top) == 'o' && peekFromTop(top, 1) == 'f') {
+				while(getc(file) != '\n');
+				*line = *line + 1;
+			}
 			else push(&top, ch);
 		}
 		else {
-			if ((peek(top) < 'A' || peek(top) > 'Z') ||
-				(peek(top) < 'a' || peek(top) > 'z')/* || peek(top) == ')'*/) {
+			if (((peek(top) < 'A' || peek(top) > 'Z') &&
+				(peek(top) < 'a' || peek(top) > 'z') && (peek(top) < '0' || peek(top) > '9')) && peek(top) != ')') {
 				return 0;
 			}
 		}
