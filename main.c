@@ -23,7 +23,15 @@ int validateSemicolons(FILE *file, Node* top, int* line) {
 	top = NULL;
 	while((ch = getc(file)) != EOF) {
 		if (ch != ';') {
-			if (ch == '\n') *line = *line + 1;
+			if (ch == '\n') {
+				if (peek(top) != ';') {
+					while (!isEmpty(top) && peek(top) == ' ') {
+						pop(&top);
+					}
+					if (!isEmpty(top)) return 0;
+				}
+				*line = *line + 1;
+			}
 			else if (ch == '#') {
 				while(getc(file) != '\n');
 				*line = *line + 1;
