@@ -64,7 +64,7 @@ int validateSemicolons(FILE *file, Node* top, int* line) {
 			else push(&top, ch);
 		}
 		else {
-			/* semicolons cant be anywhere other than identifiers and function invocations */
+			/* semicolons cant be anywhere other than after identifiers and function invocations */
 			/* eg: a = a + ; is invalid */
 			/* ignore whitespace */
 			while(!isEmpty(top) && (peek(top) == ' ' || peek(top) == '\t' || peek(top) == '\n')) pop(&top);
