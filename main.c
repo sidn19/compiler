@@ -12,7 +12,7 @@ int main() {
 		printf("No semicolon errors detected");
 	}
 	else {
-		printf("Semicolon error detected at line %d", line);
+		printf("Semicolon error detected at line %d", line-1);
 	}
 	fclose(file);
 	return 0;
